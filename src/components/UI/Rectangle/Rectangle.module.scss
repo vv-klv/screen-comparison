@@ -1,0 +1,12 @@
+.rectangle {
+  position: absolute;
+  border: 3px solid rgba(4, 58, 138, 0.6);
+  background: rgba(4, 58, 138, 0.25);
+
+  &_inFront {
+    border: 3px solid rgba(219, 70, 159, 0.3);
+    background: rgba(219, 70, 159, 0.2);
+    z-index: 10;
+    bottom: 0;
+  }
+}

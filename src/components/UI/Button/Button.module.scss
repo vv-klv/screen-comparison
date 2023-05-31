@@ -1,0 +1,18 @@
+.button {
+  padding: 0 0.75rem;
+  height: 2.375rem;
+  width: 10rem;
+
+  color: #fffc;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}

@@ -1,0 +1,23 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  z-index: 100;
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+  }
+}

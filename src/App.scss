@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Roboto',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+
+body {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: rgba(white, 0.8);
+  background-color: #040d21;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    background-image: url("./assets/waves.svg");
+    width: 105%;
+    height: 105%;
+    background-size: cover;
+    opacity: 0.3;
+    filter: blur(10px);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -2;
+    background-image: url("./assets/hero-glow.svg");
+    top: 30%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    opacity: 0.5;
+    filter: blur(10px);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0.5rem;
+
+  max-width: 1280px;
+  min-height: 100vh;
+}
+
+.title {
+  text-align: center;
+  margin: 1rem 0 1.25rem;
+  text-transform: uppercase;
+}

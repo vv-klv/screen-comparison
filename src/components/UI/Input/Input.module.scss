@@ -1,0 +1,34 @@
+.wrapper {
+  position: relative;
+
+  &_hidden {
+    display: none;
+  }
+}
+
+.input {
+  padding: 0 0.75rem;
+  width: 7rem; // 112px
+  height: 2.375rem;
+  outline: none;
+  caret-color: rgba(white, 0.7);
+
+  font-size: 1rem;
+  text-align: center;
+  color: rgba(white, 0.8);
+  border: 1px solid rgba(white, 0.2);
+  border-radius: 0.25rem;
+  background: rgba(white, 0.1);
+}
+
+.hasCross::before {
+  content: 'x';
+  position: absolute;
+  width: 1rem;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 0.875rem;
+  color: rgba(white, 0.8);
+}
