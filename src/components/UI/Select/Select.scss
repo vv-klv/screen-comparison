@@ -1,6 +1,10 @@
 .react-select {
-  //
+
   &__single-value {
+    color: rgba(white, 0.8) !important;
+  }
+
+  &__input-container {
     color: rgba(white, 0.8) !important;
   }
 
@@ -25,7 +29,7 @@
   &__menu {
     overflow: hidden !important;
     background: rgba(white, 0.1) !important;
-    backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(4px) !important;
     border: 1px solid rgba(white, 0.2) !important;
   }
 
@@ -35,7 +39,7 @@
 
   &__option {
     &:hover, &--is-focused {
-      background: rgba(white, 0.125) !important;
+      background: rgba(white, 0.1) !important;
     }
 
     &--is-selected {

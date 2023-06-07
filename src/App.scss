@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Roboto',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
 }
@@ -14,7 +14,7 @@ body {
 
   color: rgba(white, 0.8);
   background-color: #040d21;
-  overflow: hidden;
+  overflow-x: hidden;
 
   &::before {
     content: '';
@@ -23,7 +23,7 @@ body {
     z-index: -1;
     background-image: url("./assets/waves.svg");
     width: 105%;
-    height: 105%;
+    height: 100%;
     background-size: cover;
     opacity: 0.3;
     filter: blur(10px);
@@ -35,10 +35,12 @@ body {
     position: absolute;
     z-index: -2;
     background-image: url("./assets/hero-glow.svg");
-    top: 30%;
-    left: 50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     transform: translate(-50%, -50%);
     background-size: cover;
     opacity: 0.5;
@@ -58,7 +60,9 @@ body {
 }
 
 .title {
+  font-weight: 600;
+  font-size: 2.5rem;
   text-align: center;
-  margin: 1rem 0 1.25rem;
+  margin: 2rem 0 2rem;
   text-transform: uppercase;
 }

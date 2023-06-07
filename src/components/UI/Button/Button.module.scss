@@ -1,11 +1,11 @@
 .button {
-  padding: 0 0.75rem;
+  padding: 0 0.5rem;
   height: 2.375rem;
-  width: 10rem;
+  width: 9rem;
 
   color: #fffc;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 500;
   text-transform: uppercase;
 
   background: rgba(255, 255, 255, 0.1);
@@ -14,5 +14,9 @@
 
   &:hover {
     background: rgba(255, 255, 255, 0.15);
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, 0.2);
   }
 }
