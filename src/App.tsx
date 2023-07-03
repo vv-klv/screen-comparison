@@ -9,7 +9,7 @@ function App() {
     const secondScreen = useAppSelector(state => state.screens.secondScreen)
 
     return (
-        <div className="App">
+        <div className="app">
             <div className="container">
                 <h1 className="title">Сравнение размеров экранов</h1>
                 <Controls />

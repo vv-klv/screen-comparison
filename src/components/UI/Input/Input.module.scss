@@ -22,13 +22,14 @@
 }
 
 .hasCross::before {
-  content: 'x';
+  content: '✕';
   position: absolute;
   width: 1rem;
   left: -1rem;
   top: 50%;
   transform: translateY(-50%);
 
-  font-size: 0.875rem;
+  font-size: 0.625rem;
+  font-weight: 600;
   color: rgba(white, 0.8);
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useResize } from "../../../hooks/useResize";
 import calculateSizes from "../../../utils/calculateSizes";
 import calculateDrawers from "../../../utils/calculateDrawers";
 import truncateAfterComma from "../../../utils/truncateAfterComma";
@@ -17,7 +18,7 @@ const ScreensDrawer = ({ firstScreen, secondScreen }: IScreensDrawerProps) => {
     let [width1, height1, width2, height2] = calculateSizes(firstScreen, secondScreen)
     let [screenInFront, xDraw1, xDraw2, yDraw1, yDraw2] = calculateDrawers(width1, height1, width2, height2)
 
-    const maxSize: number = 650
+    const maxSize = useResize()
 
     useEffect(() => {
         [width1, height1, width2, height2] = calculateSizes(firstScreen, secondScreen);
@@ -25,22 +26,24 @@ const ScreensDrawer = ({ firstScreen, secondScreen }: IScreensDrawerProps) => {
     }, [firstScreen, secondScreen]);
 
     useEffect(() => {
-        let ratio: number = 1;
+        let ratio = 1;
 
         if (Math.max(yDraw1, yDraw2) > 1) {
-            ratio = truncateAfterComma(4,1 / Math.max(yDraw1, yDraw2))
+            ratio = truncateAfterComma(4, 1 / Math.max(yDraw1, yDraw2))
         }
 
         setFirstScreenDrawParams([xDraw1 * maxSize * ratio, yDraw1 * maxSize * ratio])
         setSecondScreenDrawParams([xDraw2 * maxSize * ratio, yDraw2 * maxSize * ratio])
-    }, [xDraw1, xDraw2, yDraw1, yDraw2]);
-
+    }, [xDraw1, xDraw2, yDraw1, yDraw2, maxSize])
 
 
     return (
         <div
             className={cl.drawer}
-            style={{height: `${Math.max(yDraw1, yDraw2) * maxSize}px`}}
+            style={{
+                height: `${Math.max(yDraw1, yDraw2) * maxSize}px`,
+                width: `${Math.max(xDraw1, xDraw2) * maxSize}px`
+            }}
         >
             <Screen
                 isInFront={0 === screenInFront}
