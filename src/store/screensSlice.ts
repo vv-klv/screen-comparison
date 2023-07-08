@@ -10,8 +10,8 @@ interface IState {
 const screensSlice = createSlice({
     name: 'screens',
     initialState: {
-        firstScreen: [27, 16, 9],
-        secondScreen: [24, 16, 9],
+        firstScreen: [24, 16, 9],
+        secondScreen: [27, 16, 9],
         firstScreenRes: [1920, 1080],
         secondScreenRes: [1920, 1080]
     } as IState,

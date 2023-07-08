@@ -12,19 +12,16 @@ interface IControlsFormProps {
     screenIndex: number
     options: TOption[]
     showMainInput: boolean
-    showTooltip?: boolean
     tooltipText?: string
     formDescription?: string
 }
 
-const ControlsForm = ({ newState, handleInputChange, handleSelectChange, screenIndex, options, showMainInput, showTooltip, tooltipText = '', formDescription }: IControlsFormProps) => {
+const ControlsForm = ({ newState, handleInputChange, handleSelectChange, screenIndex, options, showMainInput, tooltipText = '', formDescription }: IControlsFormProps) => {
     const [isCustomAspect, setIsCustomAspect] = useState(false);
     const [tmpState, setTmpState] = useState(newState);
 
 
     const handleInput = (inputIndex: number, value: number) => {
-
-
         const newState = [...tmpState]
         newState[inputIndex] = value
         handleInputChange(screenIndex, inputIndex, newState)

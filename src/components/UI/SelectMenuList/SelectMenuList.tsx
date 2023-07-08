@@ -1,23 +1,12 @@
-import React from "react";
+import { useRef, useEffect } from "react";
 import { components } from "react-select";
 import { Scrollbars } from "react-custom-scrollbars-2";
-
-const renderThumbVertical = () => {
-    return (
-        <div
-            style={{
-                backgroundColor: "rgba(255, 255, 255, 0.5)",
-                borderRadius: '0.125rem',
-                width: "0.25rem"
-            }}
-        />
-    );
-}
+import renderThumbVertical from "../RenderThumbs/RenderThumbVertical";
 
 const SelectMenuList = ({innerRef, ...props}: any) => {
-    const intermediateRef = React.useRef();
+    const intermediateRef = useRef();
 
-    React.useEffect(() => {
+    useEffect(() => {
         // @ts-ignore
         innerRef(intermediateRef.current ? intermediateRef.current.view : null);
     }, [innerRef, intermediateRef]);
