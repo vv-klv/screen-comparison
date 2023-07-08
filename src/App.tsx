@@ -12,7 +12,7 @@ function App() {
     return (
         <div className="app">
             <div className="container">
-                <h1 className="title">Сравнение размеров экранов</h1>
+                <h1 className="title">Сравнение экранов</h1>
                 <Controls />
                 <ScreensDrawer
                     firstScreen={firstScreen}

@@ -74,7 +74,7 @@ body {
 
 .title {
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   text-align: center;
   margin: 2rem 0 2rem;
   text-transform: uppercase;
@@ -83,18 +83,9 @@ body {
     font-size: 2rem;
   }
 
-  @media screen and (max-width: 666px) {
+  @media screen and (max-width: 424px) {
     font-size: 1.75rem;
   }
-
-  @media screen and (max-width: 574px) {
-    font-size: 1.5rem;
-  }
-
-  @media screen and (max-width: 424px) {
-    font-size: 1.25rem;
-  }
-
 }
 
 html {
