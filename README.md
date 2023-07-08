@@ -5,7 +5,7 @@
 [<img src="https://github.com/vv-klv/screen-comparison/assets/99871841/d2826269-8e7c-41e1-82bf-4a008d60249a" />](https://github.com/vv-klv/screen-comparison/assets/99871841/d2826269-8e7c-41e1-82bf-4a008d60249a)
 ## Mobile
 
-[<img src="https://github.com/vv-klv/screen-comparison/assets/99871841/4007a0c5-97d1-44cb-9031-b8f7cb51adb5" width="360"/>](https://github.com/vv-klv/screen-comparison/assets/99871841/4007a0c5-97d1-44cb-9031-b8f7cb51adb5)
+[<img src="https://github.com/vv-klv/screen-comparison/assets/99871841/4007a0c5-97d1-44cb-9031-b8f7cb51adb5" width="270"/>](https://github.com/vv-klv/screen-comparison/assets/99871841/4007a0c5-97d1-44cb-9031-b8f7cb51adb5)
 
 
 ## Available Scripts
