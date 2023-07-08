@@ -1,3 +1,5 @@
+![image](https://github.com/vv-klv/screen-size-comparison/assets/99871841/94ae301e-6ac1-444c-a00e-61c90f17f2ef)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
