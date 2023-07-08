@@ -3,24 +3,23 @@ import cl from "./Tooltip.module.scss";
 
 interface ITooltipProps {
     content: string
-    direction: string
     delay: number
     children?: ReactNode
 }
 
-const Tooltip = ({ content, direction, delay, children }: ITooltipProps) => {
+const Tooltip = ({ content, delay, children }: ITooltipProps) => {
     const [active, setActive] = useState(false);
-    let timeout;
 
     const showTip = () => {
-        timeout = setTimeout(() => {
+        setTimeout(() => {
             setActive(true);
         }, delay || 250);
     };
 
     const hideTip = () => {
-        clearInterval(timeout);
-        setActive(false);
+        setTimeout(() => {
+            setActive(false);
+        }, delay || 250);
     };
 
     return (
@@ -32,7 +31,7 @@ const Tooltip = ({ content, direction, delay, children }: ITooltipProps) => {
             {children}
             {
                 active &&
-                <div className={`${cl.tooltip__tip} right`}>
+                <div className={`${cl.tooltip__tip}`}>
                     {content}
                 </div>
             }

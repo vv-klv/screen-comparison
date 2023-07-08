@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { useResize } from "../../../hooks/useResize";
-import calculateSizes from "../../../utils/calculateSizes";
-import calculateDrawers from "../../../utils/calculateDrawers";
-import truncateAfterComma from "../../../utils/truncateAfterComma";
-import Screen from "../Screen/Screen";
-import cl from "./ScreensDrawer.module.scss";
+import { useResize } from "../../hooks/useResize";
+import calculateSizes from "../../utils/calculateSizes";
+import calculateDrawers from "../../utils/calculateDrawers";
+import truncateAfterComma from "../../utils/truncateAfterComma";
+import Screen from "../UI/Screen/Screen";
+import cl from "./ScreensDrawer.module.scss"
 
 interface IScreensDrawerProps {
-    firstScreen: TScreen;
-    secondScreen: TScreen;
+    firstScreen: number[];
+    secondScreen: number[];
 }
 
 const ScreensDrawer = ({ firstScreen, secondScreen }: IScreensDrawerProps) => {

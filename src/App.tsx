@@ -1,6 +1,7 @@
 import './App.scss';
 import Controls from './components/Controls/Controls';
-import ScreensDrawer from './components/UI/ScreensDrawer/ScreensDrawer';
+import ScreensDrawer from './components/ScreensDrawer/ScreensDrawer';
+import ScreensCalculations from "./components/ScreensCalculations/ScreensCalculations";
 import { useAppSelector } from "./hooks/hooks";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                     firstScreen={firstScreen}
                     secondScreen={secondScreen}
                 />
+                <ScreensCalculations />
             </div>
         </div>
     );

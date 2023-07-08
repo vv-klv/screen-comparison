@@ -1,14 +1,14 @@
 .wrapper {
   position: relative;
 
-  &_hidden {
+  &__hidden {
     display: none;
   }
 }
 
 .input {
   padding: 0 0.75rem;
-  width: 7rem; // 112px
+  width: 8.25rem;
   height: 2.375rem;
   outline: none;
   caret-color: rgba(white, 0.7);
@@ -29,6 +29,7 @@
   top: 50%;
   transform: translateY(-50%);
 
+  text-align: center;
   font-size: 0.625rem;
   font-weight: 600;
   color: rgba(white, 0.8);

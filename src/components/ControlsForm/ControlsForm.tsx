@@ -4,64 +4,74 @@ import Input from "../UI/Input/Input"
 import Select from "../UI/Select/Select"
 import cl from "./ControlsForm.module.scss"
 
+
 interface IControlsFormProps {
-    newScreen: number[];
-    setNewScreen: Dispatch<SetStateAction<number[]>>;
-    screenIndex: number;
+    newState: number[]
+    handleInputChange: (screenIndex: number, inputIndex: number, value: number[]) => void
+    handleSelectChange?: (screenIndex: number, value: number[] | string) => void
+    screenIndex: number
+    options: TOption[]
+    showMainInput: boolean
+    showTooltip?: boolean
+    tooltipText?: string
+    formDescription?: string
 }
 
-const ControlsForm = ({ newScreen, setNewScreen }: IControlsFormProps) => {
+const ControlsForm = ({ newState, handleInputChange, handleSelectChange, screenIndex, options, showMainInput, showTooltip, tooltipText = '', formDescription }: IControlsFormProps) => {
     const [isCustomAspect, setIsCustomAspect] = useState(false);
-    const [tmpScreen, setTmpScreen] = useState(newScreen);
-    // [27, 16, 9]
-    const handleChange = (idx: number, value: number) => {
-        const newScreen = [...tmpScreen]
-        newScreen[idx] = value
-        setNewScreen(newScreen)
-        setTmpScreen(newScreen)
+    const [tmpState, setTmpState] = useState(newState);
+
+
+    const handleInput = (inputIndex: number, value: number) => {
+
+
+        const newState = [...tmpState]
+        newState[inputIndex] = value
+        handleInputChange(screenIndex, inputIndex, newState)
+        setTmpState(newState)
     };
 
-    const handleSelectChange = (value: number[]) => {
-        const newScreen = [...tmpScreen]
-        newScreen[1] = value[0]
-        newScreen[2] = value[1]
-        setNewScreen(newScreen)
-        setTmpScreen(newScreen)
+    const handleSelect = (value: number[] | string) => {
+        handleSelectChange?.(screenIndex, value)
     };
 
     return (
         <div className={cl.form}>
-
+            {
+                !showMainInput &&
+                <div className={cl.form__descr}>
+                    {formDescription}
+                </div>
+            }
             <Input
-                isVisible={true}
+                isVisible={showMainInput}
                 placeholder="Размер"
-                handleChange={handleChange}
+                handleChange={handleInput}
                 idx={0}
+                initialValue={`${newState[0]}`}
             />
             <Select
-                setIsCustomAspect={setIsCustomAspect}
-                handleSelectChange={handleSelectChange}
+                setIsCustom={setIsCustomAspect}
+                handleSelect={handleSelect}
+                options={options}
             />
             {
-                isCustomAspect &&
-                <Tooltip
-                    content={"Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)"}
-                    delay={250}
-                    direction={"right"}
-                    children={"?"}
-                />
+                tooltipText.length
+                ? isCustomAspect &&
+                    <Tooltip content={tooltipText} delay={250}>?</Tooltip>
+                : <></>
             }
             <Input
                 isVisible={isCustomAspect}
                 placeholder="Ширина"
-                handleChange={handleChange}
-                idx={1}
+                handleChange={handleInput}
+                idx={showMainInput ? 1 : 0}
             />
             <Input
                 isVisible={isCustomAspect}
                 placeholder="Высота"
-                handleChange={handleChange}
-                idx={2}
+                handleChange={handleInput}
+                idx={showMainInput ? 2 : 1}
                 cross
             />
         </div>

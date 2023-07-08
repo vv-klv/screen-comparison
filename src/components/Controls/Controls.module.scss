@@ -8,7 +8,7 @@
   max-width: 650px;
   z-index: 100;
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 600px) {
     gap: 1.5rem;
     flex-direction: column;
     align-items: center;
@@ -19,10 +19,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    align-content: flex-start;
     text-align: center;
-    width: 15rem;
+    width: min-content;
 
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 600px) {
       flex-direction: row;
       align-items: baseline;
       width: 100%;
@@ -31,25 +32,25 @@
 
   &__title {
     margin-bottom: 1rem;
+    width: 6rem;
+
     text-transform: uppercase;
     font-weight: 500;
-    width: 50%;
 
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 600px) {
       font-size: 1.125rem;
       width: 5.5rem;
       margin-bottom: 0.5rem;
-      margin-right: 1rem;
+      margin-right: 2rem;
     }
   }
 
   &__button {
     display: flex;
     width: 100%;
-    margin-top: 1rem;
     justify-content: center;
 
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 600px) {
       margin-top: 0;
     }
   }

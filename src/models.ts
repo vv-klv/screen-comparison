@@ -1,6 +1,4 @@
-type TOptions = {
-    value: string
+type TOption = {
+    value: number[] | string
     label: string
 }
-
-type TScreen = number[]

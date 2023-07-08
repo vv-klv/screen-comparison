@@ -1,26 +1,54 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { setFirstScreen, setSecondScreen } from "../../store/screensSlice";
+import { setFirstScreenState, setSecondScreenState } from "../../store/screensSlice";
 import ControlsForm from "../ControlsForm/ControlsForm";
 import Button from "../UI/Button/Button";
 import cl from "./Controls.module.scss";
 
-const Controls = () => {
-    const firstScreen = useAppSelector(state => state.screens.firstScreen)
-    const secondScreen = useAppSelector(state => state.screens.secondScreen)
+const options: TOption[]  = [
+    { value: 'custom', label: 'Своё' },
+    { value: [16, 9], label: '16:9' },
+    { value: [16, 10], label: '16:10' },
+    { value: [21, 9], label: '21:9' },
+    { value: [5, 4], label: '5:4' },
+    { value: [4, 3], label: '4:3' },
+    { value: [3, 2], label: '3:2' },
+]
 
-    const [newFirstScreen, setNewFirstScreen] = useState<number[]>([...firstScreen])
-    const [newSecondScreen, setNewSecondScreen] = useState<number[]>([...secondScreen])
+const Controls = () => {
+    const firstScreenState = useAppSelector(state => state.screens.firstScreen)
+    const secondScreenState = useAppSelector(state => state.screens.secondScreen)
+
+    const [firstScreen, setFirstScreen] = useState<number[]>([...firstScreenState])
+    const [secondScreen, setSecondScreen] = useState<number[]>([...secondScreenState])
     const dispatch = useAppDispatch()
 
-    // TODO нужны ли эти if ?
-    const handleClick = () => {
-        if (firstScreen.flat() !== newSecondScreen.flat()) {
-            dispatch(setFirstScreen(newFirstScreen))
+    const handleCompare = () => {
+        dispatch(setFirstScreenState(firstScreen))
+        dispatch(setSecondScreenState(secondScreen))
+    };
+
+    const handleInputChange = (screenIndex: number, inputIndex: number, value: number[]) => {
+        if (screenIndex === 0) {
+            setFirstScreen(value)
+        } else if (screenIndex === 1) {
+            setSecondScreen(value)
+        } else {
+            console.log('Wrong screen number')
+        }
+    };
+
+    const handleSelectChange = (screenIndex: number, value: number[] | string) => {
+        if (typeof(value) === "string") {
+            return
         }
 
-        if (secondScreen.flat() !== newSecondScreen.flat()) {
-            dispatch(setSecondScreen(newSecondScreen))
+        if (screenIndex === 0) {
+            dispatch(setFirstScreenState([firstScreen[0], ...value]))
+        } else if (screenIndex === 1) {
+            dispatch(setSecondScreenState([secondScreen[0], ...value]))
+        } else {
+            console.log('Wrong screen number')
         }
     };
 
@@ -29,21 +57,29 @@ const Controls = () => {
             <div className={cl.controls__item}>
                 <h3 className={cl.controls__title}>Экран 1</h3>
                 <ControlsForm
-                    newScreen={newFirstScreen}
-                    setNewScreen={setNewFirstScreen}
+                    newState={firstScreen}
+                    handleInputChange={handleInputChange}
+                    handleSelectChange={handleSelectChange}
                     screenIndex={0}
+                    options={options}
+                    showMainInput={true}
+                    tooltipText={'Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'}
                 />
             </div>
             <div className={cl.controls__item}>
                 <h3 className={cl.controls__title}>Экран 2</h3>
                 <ControlsForm
-                    newScreen={newSecondScreen}
-                    setNewScreen={setNewSecondScreen}
+                    newState={secondScreen}
+                    handleInputChange={handleInputChange}
+                    handleSelectChange={handleSelectChange}
                     screenIndex={1}
+                    options={options}
+                    showMainInput={true}
+                    tooltipText={'Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'}
                 />
             </div>
             <div className={cl.controls__button}>
-                <Button handleClick={handleClick}>Сравнить</Button>
+                <Button handleClick={handleCompare}>Сравнить</Button>
             </div>
         </div>
     );

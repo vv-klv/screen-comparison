@@ -6,11 +6,13 @@ interface IInput {
     placeholder: string
     handleChange: (idx: number, value: number) => void
     idx: number
+    initialValue?: string
+    width?: string
     cross?: boolean
 }
 
-const Input = ({ isVisible, placeholder, handleChange, idx, cross }: IInput) => {
-    const [inputValue, setInputValue] = useState('')
+const Input = ({ isVisible, placeholder, handleChange, idx, initialValue = '', width, cross }: IInput) => {
+    const [inputValue, setInputValue] = useState(initialValue)
 
     const validateInput = (value: string) => {
         if (/^[0-9]+\.?[0-9]*$/.test(value) || value === '') {
@@ -22,7 +24,7 @@ const Input = ({ isVisible, placeholder, handleChange, idx, cross }: IInput) => 
     }
 
     return (
-        <div className={isVisible ?  cl.wrapper : cl.wrapper_hidden}>
+        <div className={isVisible ?  cl.wrapper : cl.wrapper__hidden}>
             <input
                 type="text"
                 placeholder={placeholder}
@@ -30,8 +32,9 @@ const Input = ({ isVisible, placeholder, handleChange, idx, cross }: IInput) => 
                 value={inputValue}
                 onChange={e => validateInput(e.target.value)}
                 maxLength={5}
+                style={{ width: width }}
             />
-            {cross && <div className={isVisible ? cl.hasCross : ''} />}
+            { cross && <div className={isVisible ? cl.hasCross : ''} /> }
         </div>
     )
 };
