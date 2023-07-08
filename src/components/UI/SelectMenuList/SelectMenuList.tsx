@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { components } from "react-select";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import renderThumbVertical from "../RenderThumbs/RenderThumbVertical";
+import cl from "./SelectMenuList.module.scss"
 
 const SelectMenuList = ({innerRef, ...props}: any) => {
     const intermediateRef = useRef();
@@ -15,7 +16,10 @@ const SelectMenuList = ({innerRef, ...props}: any) => {
         <components.MenuList {...props}>
             <div style={{ height: '15.75rem' }}>
                 {   // @ts-ignore
-                    <Scrollbars renderThumbVertical={renderThumbVertical} ref={intermediateRef}>
+                    <Scrollbars ref={intermediateRef}
+                                className={cl.menuList}
+                                renderThumbVertical={renderThumbVertical}
+                    >
                         { props.children }
                     </Scrollbars>
                 }
