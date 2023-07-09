@@ -6,9 +6,10 @@ import cl from "./ControlsForm.module.scss"
 
 
 interface IControlsFormProps {
+    title: string
     newState: number[]
     handleInputChange: (screenIndex: number, inputIndex: number, value: number[]) => void
-    handleSelectChange?: (screenIndex: number, value: number[] | string) => void
+    handleSelectChange: (screenIndex: number, value: number[] | string) => void
     screenIndex: number
     options: TOption[]
     showMainInput: boolean
@@ -16,7 +17,18 @@ interface IControlsFormProps {
     formDescription?: string
 }
 
-const ControlsForm = ({ newState, handleInputChange, handleSelectChange, screenIndex, options, showMainInput, tooltipText = '', formDescription }: IControlsFormProps) => {
+const ControlsForm = ({
+    title,
+    newState,
+    handleInputChange,
+    handleSelectChange,
+    screenIndex,
+    options,
+    showMainInput,
+    tooltipText = '',
+    formDescription
+}: IControlsFormProps) => {
+
     const [isCustomAspect, setIsCustomAspect] = useState(false);
     const [tmpState, setTmpState] = useState(newState);
 
@@ -33,45 +45,48 @@ const ControlsForm = ({ newState, handleInputChange, handleSelectChange, screenI
     };
 
     return (
-        <div className={cl.form}>
-            {
-                !showMainInput &&
-                <div className={cl.form__descr}>
-                    {formDescription}
-                </div>
-            }
-            <Input
-                isVisible={showMainInput}
-                placeholder="Размер"
-                handleChange={handleInput}
-                idx={0}
-                initialValue={`${newState[0]}`}
-            />
-            <Select
-                setIsCustom={setIsCustomAspect}
-                handleSelect={handleSelect}
-                options={options}
-            />
-            {
-                tooltipText.length
-                ? isCustomAspect &&
-                    <Tooltip content={tooltipText} delay={250}>?</Tooltip>
-                : <></>
-            }
-            <Input
-                isVisible={isCustomAspect}
-                placeholder="Ширина"
-                handleChange={handleInput}
-                idx={showMainInput ? 1 : 0}
-            />
-            <Input
-                isVisible={isCustomAspect}
-                placeholder="Высота"
-                handleChange={handleInput}
-                idx={showMainInput ? 2 : 1}
-                cross
-            />
-        </div>
+        <>
+            <h2 className={cl.form__title}>{title}</h2>
+            <div className={cl.form}>
+                {
+                    !showMainInput &&
+                    <div className={cl.form__descr}>
+                        {formDescription}
+                    </div>
+                }
+                <Input
+                    isVisible={showMainInput}
+                    placeholder="Размер"
+                    handleChange={handleInput}
+                    idx={0}
+                    initialValue={`${newState[0]}`}
+                />
+                <Select
+                    setIsCustom={setIsCustomAspect}
+                    handleSelect={handleSelect}
+                    options={options}
+                />
+                {
+                    tooltipText.length
+                        ? isCustomAspect &&
+                            <Tooltip content={tooltipText} delay={250}>?</Tooltip>
+                        : <></>
+                }
+                <Input
+                    isVisible={isCustomAspect}
+                    placeholder="Ширина"
+                    handleChange={handleInput}
+                    idx={showMainInput ? 1 : 0}
+                />
+                <Input
+                    isVisible={isCustomAspect}
+                    placeholder="Высота"
+                    handleChange={handleInput}
+                    idx={showMainInput ? 2 : 1}
+                    cross
+                />
+            </div>
+        </>
     );
 };
 

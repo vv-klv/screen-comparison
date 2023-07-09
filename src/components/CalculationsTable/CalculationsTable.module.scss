@@ -32,6 +32,7 @@
         font-size: 1rem;
         font-weight: 300;
         text-align: center;
+        background-clip: padding-box;
 
         @media screen and (max-width: 600px) {
             padding: 0.25rem;
@@ -51,10 +52,12 @@
 
         &.inFront {
             background: #361c3c;
+            background-clip: padding-box;
         }
 
         &.inRear {
             background: #181d43;
+            background-clip: padding-box;
         }
 
         b {

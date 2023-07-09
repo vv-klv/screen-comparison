@@ -34,7 +34,7 @@ const Controls = () => {
         } else if (screenIndex === 1) {
             setSecondScreen(value)
         } else {
-            console.log('Wrong screen number')
+            throw('Wrong screen number')
         }
     };
 
@@ -48,34 +48,34 @@ const Controls = () => {
         } else if (screenIndex === 1) {
             dispatch(setSecondScreenState([secondScreen[0], ...value]))
         } else {
-            console.log('Wrong screen number')
+            throw('Wrong screen number')
         }
     };
 
     return (
         <div className={cl.controls}>
             <div className={cl.controls__item}>
-                <h3 className={cl.controls__title}>Экран 1</h3>
                 <ControlsForm
+                    title='Экран 1'
                     newState={firstScreen}
                     handleInputChange={handleInputChange}
                     handleSelectChange={handleSelectChange}
                     screenIndex={0}
                     options={options}
                     showMainInput={true}
-                    tooltipText={'Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'}
+                    tooltipText='Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'
                 />
             </div>
             <div className={cl.controls__item}>
-                <h3 className={cl.controls__title}>Экран 2</h3>
                 <ControlsForm
+                    title='Экран 2'
                     newState={secondScreen}
                     handleInputChange={handleInputChange}
                     handleSelectChange={handleSelectChange}
                     screenIndex={1}
                     options={options}
                     showMainInput={true}
-                    tooltipText={'Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'}
+                    tooltipText='Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'
                 />
             </div>
             <div className={cl.controls__button}>

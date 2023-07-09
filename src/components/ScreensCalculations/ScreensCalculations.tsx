@@ -71,7 +71,7 @@ const ScreensCalculations = () => {
                 setSecondScreenRes(prev => [prev[0], value[1]])
                 return
             default:
-                console.log('Wrong input number')
+                throw('Wrong input number')
         }
     };
 
@@ -82,7 +82,7 @@ const ScreensCalculations = () => {
             } else if (screenIndex === 1) {
                 setSecondScreenRes([0, 0])
             } else {
-                console.log('Wrong screen number')
+                throw('Wrong screen number')
             }
             return
         }
@@ -92,7 +92,7 @@ const ScreensCalculations = () => {
         } else if (screenIndex === 1) {
             setSecondScreenRes(value)
         } else {
-            console.log('Wrong screen number')
+            throw('Wrong screen number')
         }
     };
 
@@ -100,29 +100,29 @@ const ScreensCalculations = () => {
         <div className={cl.calculations}>
             <div className={cl.calculations__controls}>
                 <div className={cl.calculations__form}>
-                    <h3 className={cl.calculations__title}>Экран 1</h3>
                     <ControlsForm
+                        title='Экран 1'
                         newState={firstScreenRes}
                         handleInputChange={handleInputChange}
                         handleSelectChange={handleSelectChange}
                         screenIndex={0}
                         options={options}
                         showMainInput={false}
-                        tooltipText={''}
-                        formDescription={'Разрешение:'}
+                        tooltipText=''
+                        formDescription='Разрешение:'
                     />
                 </div>
                 <div className={cl.calculations__form}>
-                    <h3 className={cl.calculations__title}>Экран 2</h3>
                     <ControlsForm
+                        title='Экран 2'
                         newState={secondScreenRes}
                         handleInputChange={handleInputChange}
                         handleSelectChange={handleSelectChange}
                         screenIndex={1}
                         options={options}
                         showMainInput={false}
-                        tooltipText={''}
-                        formDescription={'Разрешение:'}
+                        tooltipText=''
+                        formDescription='Разрешение:'
                     />
                 </div>
                 {
