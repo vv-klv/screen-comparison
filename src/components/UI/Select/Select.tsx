@@ -9,7 +9,6 @@ interface ISelectProps {
     options: TOption[]
 }
 
-
 const Select = ({setIsCustom, handleSelect, options}: ISelectProps) => {
     const handleSelectChange = (option: SingleValue<TOption>) => {
         if (typeof(option?.value) === "string") {
