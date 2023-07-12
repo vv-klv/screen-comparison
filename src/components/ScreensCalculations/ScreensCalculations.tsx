@@ -36,7 +36,7 @@ const ScreensCalculations = () => {
     let [width1, height1, width2, height2, diag1, diag2, area1, area2] = calculateSizes(firstScreenState, secondScreenState)
     let [width1InCm, height1InCm, width2InCm, height2InCm, diag1InCm, diag2InCm, area1InCm, area2InCm] = calculateSizesInCm(firstScreenState, secondScreenState)
     let [ppi1, ppi2] = calculatePPI(firstScreenState[0], secondScreenState[0], firstScreenRes, secondScreenRes)
-    let screenInFront = width1 * height1 >= width2 * height2 ? 1 : 0
+    let screenInFront = area1 >= area2 ? 1 : 0
 
     useEffect(() => {
         [width1, height1, width2, height2, diag1, diag2, area1, area2] = calculateSizes(firstScreenState, secondScreenState);

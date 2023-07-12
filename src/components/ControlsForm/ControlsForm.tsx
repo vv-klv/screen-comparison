@@ -1,8 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../hooks/hooks";
-import Tooltip from '../UI/Tooltip/Tooltip'
+import Tooltip from "../UI/Tooltip/Tooltip"
 import Input from "../UI/Input/Input"
 import Select from "../UI/Select/Select"
+import calculateDrawers from "../../utils/calculateDrawers"
+import calculateSizes from "../../utils/calculateSizes"
 import cl from "./ControlsForm.module.scss"
 
 
@@ -35,6 +37,9 @@ const ControlsForm = ({
     const [isCustomAspect, setIsCustomAspect] = useState(false)
     const [tmpState, setTmpState] = useState(newState)
 
+    const [width1, height1, width2, height2] = calculateSizes(firstScreenState, secondScreenState)
+    const [screenInFront] = calculateDrawers(width1, height1, width2, height2)
+
     useEffect(() => {
         if (screenIndex === 0) {
             setTmpState(firstScreenState)
@@ -43,7 +48,6 @@ const ControlsForm = ({
             setTmpState(secondScreenState)
         }
     }, [firstScreenState, secondScreenState])
-
 
     const handleInput = (inputIndex: number, value: number) => {
         const newState = [...tmpState]
@@ -58,7 +62,10 @@ const ControlsForm = ({
 
     return (
         <>
-            <h2 className={cl.form__title}>{title}</h2>
+            <h2 className={cl.form__title}>
+                {title}
+                <i className={`${cl.form__dot} ${screenInFront === screenIndex ? cl.form__dot_purple : ""}`} />
+            </h2>
             <div className={cl.form}>
                 {
                     !showMainInput &&
