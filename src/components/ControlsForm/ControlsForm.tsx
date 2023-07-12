@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useAppSelector } from "../../hooks/hooks";
 import Tooltip from '../UI/Tooltip/Tooltip'
 import Input from "../UI/Input/Input"
 import Select from "../UI/Select/Select"
@@ -28,9 +29,20 @@ const ControlsForm = ({
     tooltipText = '',
     formDescription
 }: IControlsFormProps) => {
+    const firstScreenState = useAppSelector(state => state.screens.firstScreen)
+    const secondScreenState = useAppSelector(state => state.screens.secondScreen)
 
-    const [isCustomAspect, setIsCustomAspect] = useState(false);
-    const [tmpState, setTmpState] = useState(newState);
+    const [isCustomAspect, setIsCustomAspect] = useState(false)
+    const [tmpState, setTmpState] = useState(newState)
+
+    useEffect(() => {
+        if (screenIndex === 0) {
+            setTmpState(firstScreenState)
+        }
+        if (screenIndex === 1) {
+            setTmpState(secondScreenState)
+        }
+    }, [firstScreenState, secondScreenState])
 
 
     const handleInput = (inputIndex: number, value: number) => {

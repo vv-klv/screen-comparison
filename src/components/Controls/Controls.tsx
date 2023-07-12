@@ -44,8 +44,10 @@ const Controls = () => {
         }
 
         if (screenIndex === 0) {
+            setFirstScreen([firstScreen[0], ...value])
             dispatch(setFirstScreenState([firstScreen[0], ...value]))
         } else if (screenIndex === 1) {
+            setSecondScreen([secondScreen[0], ...value])
             dispatch(setSecondScreenState([secondScreen[0], ...value]))
         } else {
             throw('Wrong screen number')
