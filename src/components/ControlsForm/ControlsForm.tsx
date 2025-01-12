@@ -95,21 +95,24 @@ const ControlsForm = ({
                         : <></>
                 }
             </div>
-            <div className={cl.form__inputs}>
-                <Input
-                    isVisible={isCustomAspect}
-                    placeholder="Ширина"
-                    handleChange={handleInput}
-                    idx={showSizeInput ? 1 : 0}
-                />
-                <Input
-                    isVisible={isCustomAspect}
-                    placeholder="Высота"
-                    handleChange={handleInput}
-                    idx={showSizeInput ? 2 : 1}
-                    cross
-                />
-            </div>
+            {
+                isCustomAspect &&
+                    <div className={cl.form__inputs}>
+                        <Input
+                            isVisible={isCustomAspect}
+                            placeholder="Ширина"
+                            handleChange={handleInput}
+                            idx={showSizeInput ? 1 : 0}
+                        />
+                        <Input
+                            isVisible={isCustomAspect}
+                            placeholder="Высота"
+                            handleChange={handleInput}
+                            idx={showSizeInput ? 2 : 1}
+                            cross
+                        />
+                    </div>
+            }
         </>
     );
 };

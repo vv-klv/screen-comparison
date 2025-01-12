@@ -15,6 +15,8 @@ const options: TOption[]  = [
     { value: [3, 2], label: '3:2' },
 ]
 
+const tooltipText = 'Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'
+
 const Controls = () => {
     const firstScreenState = useAppSelector(state => state.screens.firstScreen)
     const secondScreenState = useAppSelector(state => state.screens.secondScreen)
@@ -34,7 +36,7 @@ const Controls = () => {
         } else if (screenIndex === 1) {
             setSecondScreen(value)
         } else {
-            throw('Wrong screen number')
+            throw new Error('Wrong screen number')
         }
     };
 
@@ -50,7 +52,7 @@ const Controls = () => {
             setSecondScreen([secondScreen[0], ...value])
             dispatch(setSecondScreenState([secondScreen[0], ...value]))
         } else {
-            throw('Wrong screen number')
+            throw new Error('Wrong screen number')
         }
     };
 
@@ -65,7 +67,7 @@ const Controls = () => {
                     screenIndex={0}
                     options={options}
                     showSizeInput={true}
-                    tooltipText='Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'
+                    tooltipText={tooltipText}
                 />
             </div>
             <div className={cl.controls__item}>
@@ -77,7 +79,7 @@ const Controls = () => {
                     screenIndex={1}
                     options={options}
                     showSizeInput={true}
-                    tooltipText='Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'
+                    tooltipText={tooltipText}
                 />
             </div>
             <div className={cl.controls__button}>
