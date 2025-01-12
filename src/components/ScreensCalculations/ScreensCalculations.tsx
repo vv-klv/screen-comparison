@@ -23,7 +23,7 @@ const options: TOption[]  = [
     { value: [5120, 1440], label: '5120x1440 (UWQHD)' },
     { value: [5120, 2160], label: '5120x2160 (WUHD, 5K2K)' },
     { value: [5120, 2880], label: '5120x2880 (5K)' },
-    { value: [3840, 4320], label: '7680×4320 (8K)' },
+    { value: [7680, 4320], label: '7680×4320 (8K)' },
     { value: [1280, 720], label: '1280x720 (HD)' },
     { value: [1280, 800], label: '1280x800' },
 ]
