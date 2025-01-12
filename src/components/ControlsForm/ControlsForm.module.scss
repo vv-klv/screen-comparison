@@ -1,6 +1,6 @@
 .form {
   position: relative;
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   max-width: max-content;
@@ -27,6 +27,15 @@
     }
   }
 
+  &__inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+  }
+
   &__dot {
     position: absolute;
     width: 0.5rem;
@@ -45,7 +54,6 @@
       right: 0.25rem;
     }
   }
-
 
   &__descr {
     display: flex;

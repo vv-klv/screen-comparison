@@ -1,6 +1,7 @@
 .react-select {
 
   cursor: pointer !important;
+
   &__single-value {
     color: rgba(white, 0.8) !important;
   }
@@ -15,6 +16,10 @@
     background: rgba(white, 0.1) !important;
     border: 1px solid rgba(white, 0.2) !important;
     cursor: pointer !important;
+
+    &--wide {
+      min-width: 17.5rem;
+    }
 
     &--is-focused {
       box-shadow: 0 0 0 1px rgba(white, 0.5) !important;
@@ -35,8 +40,8 @@
 
   &__menu {
     overflow: hidden !important;
-    background: rgba(white, 0.1) !important;
-    backdrop-filter: blur(4px) !important;
+    background: rgba(#333, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
     border: 1px solid rgba(white, 0.2) !important;
   }
 
@@ -66,6 +71,5 @@
 }
 
 .select {
-
   cursor: pointer;
 }

@@ -64,7 +64,7 @@ const Controls = () => {
                     handleSelectChange={handleSelectChange}
                     screenIndex={0}
                     options={options}
-                    showMainInput={true}
+                    showSizeInput={true}
                     tooltipText='Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'
                 />
             </div>
@@ -76,7 +76,7 @@ const Controls = () => {
                     handleSelectChange={handleSelectChange}
                     screenIndex={1}
                     options={options}
-                    showMainInput={true}
+                    showSizeInput={true}
                     tooltipText='Можно ввести как соотношение сторон (16:9), так и разрешение экрана (1920х1080)'
                 />
             </div>

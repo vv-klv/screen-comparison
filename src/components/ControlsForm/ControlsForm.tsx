@@ -15,9 +15,10 @@ interface IControlsFormProps {
     handleSelectChange: (screenIndex: number, value: number[] | string) => void
     screenIndex: number
     options: TOption[]
-    showMainInput: boolean
+    showSizeInput: boolean
     tooltipText?: string
     formDescription?: string
+    isWideSelect?: boolean
 }
 
 const ControlsForm = ({
@@ -27,9 +28,10 @@ const ControlsForm = ({
     handleSelectChange,
     screenIndex,
     options,
-    showMainInput,
+    showSizeInput,
     tooltipText = '',
-    formDescription
+    formDescription,
+    isWideSelect = false
 }: IControlsFormProps) => {
     const firstScreenState = useAppSelector(state => state.screens.firstScreen)
     const secondScreenState = useAppSelector(state => state.screens.secondScreen)
@@ -68,13 +70,13 @@ const ControlsForm = ({
             </h2>
             <div className={cl.form}>
                 {
-                    !showMainInput &&
-                    <div className={cl.form__descr}>
-                        {formDescription}
-                    </div>
+                    !showSizeInput &&
+                        <div className={cl.form__descr}>
+                            {formDescription}
+                        </div>
                 }
                 <Input
-                    isVisible={showMainInput}
+                    isVisible={showSizeInput}
                     placeholder="Размер"
                     handleChange={handleInput}
                     idx={0}
@@ -84,6 +86,7 @@ const ControlsForm = ({
                     setIsCustom={setIsCustomAspect}
                     handleSelect={handleSelect}
                     options={options}
+                    isWide={isWideSelect}
                 />
                 {
                     tooltipText.length
@@ -91,17 +94,19 @@ const ControlsForm = ({
                             <Tooltip content={tooltipText} delay={250}>?</Tooltip>
                         : <></>
                 }
+            </div>
+            <div className={cl.form__inputs}>
                 <Input
                     isVisible={isCustomAspect}
                     placeholder="Ширина"
                     handleChange={handleInput}
-                    idx={showMainInput ? 1 : 0}
+                    idx={showSizeInput ? 1 : 0}
                 />
                 <Input
                     isVisible={isCustomAspect}
                     placeholder="Высота"
                     handleChange={handleInput}
-                    idx={showMainInput ? 2 : 1}
+                    idx={showSizeInput ? 2 : 1}
                     cross
                 />
             </div>

@@ -11,15 +11,20 @@ import cl from "./ScreensCalculations.module.scss";
 
 const options: TOption[]  = [
     { value: 'custom', label: 'Своё' },
-    { value: [1920, 1080], label: '1920x1080' },
+    { value: [1920, 1080], label: '1920x1080 (FHD)' },
+    { value: [2560, 1440], label: '2560x1440 (QHD, 2K)' },
+    { value: [3840, 2160], label: '3840x2160 (UHD, 4K)' },
+
     { value: [1920, 1200], label: '1920x1200' },
-    { value: [2560, 1080], label: '2560x1080' },
-    { value: [2560, 1440], label: '2560x1440' },
+    { value: [2560, 1080], label: '2560x1080 (WFHD)' },
     { value: [2560, 1600], label: '2560x1600' },
-    { value: [3440, 1440], label: '3440x1440' },
+    { value: [3440, 1440], label: '3440x1440 (WHQD)' },
     { value: [3840, 1600], label: '3840x1600' },
-    { value: [3840, 2160], label: '3840x2160' },
-    { value: [1280, 720], label: '1280x720' },
+    { value: [5120, 1440], label: '5120x1440 (UWQHD)' },
+    { value: [5120, 2160], label: '5120x2160 (WUHD, 5K2K)' },
+    { value: [5120, 2880], label: '5120x2880 (5K)' },
+    { value: [3840, 4320], label: '7680×4320 (8K)' },
+    { value: [1280, 720], label: '1280x720 (HD)' },
     { value: [1280, 800], label: '1280x800' },
 ]
 
@@ -57,7 +62,8 @@ const ScreensCalculations = () => {
     }
 
     const handleInputChange = (screenIndex: number, inputIndex: number, value: number[]) => {
-        switch (inputIndex) {
+        const index = screenIndex * 2 + inputIndex;
+        switch (index) {
             case 0:
                 setFirstScreenRes(prev => [value[0], prev[1]])
                 return
@@ -107,9 +113,10 @@ const ScreensCalculations = () => {
                         handleSelectChange={handleSelectChange}
                         screenIndex={0}
                         options={options}
-                        showMainInput={false}
+                        showSizeInput={false}
                         tooltipText=''
                         formDescription='Разрешение:'
+                        isWideSelect={true}
                     />
                 </div>
                 <div className={cl.calculations__form}>
@@ -120,16 +127,17 @@ const ScreensCalculations = () => {
                         handleSelectChange={handleSelectChange}
                         screenIndex={1}
                         options={options}
-                        showMainInput={false}
+                        showSizeInput={false}
                         tooltipText=''
                         formDescription='Разрешение:'
+                        isWideSelect={true}
                     />
                 </div>
                 {
                     isNeedButton &&
-                    <div className={cl.calculations__button}>
-                        <Button handleClick={handleClick}>Посчитать</Button>
-                    </div>
+                        <div className={cl.calculations__button}>
+                            <Button handleClick={handleClick}>Посчитать</Button>
+                        </div>
                 }
             </div>
 
